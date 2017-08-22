@@ -1,0 +1,4 @@
+<view class="classname">
+  hellow {{name}}
+</view>
+<button bindtap="changename">点击</button>

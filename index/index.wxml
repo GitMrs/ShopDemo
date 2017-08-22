@@ -1,0 +1,30 @@
+<view class="container">
+  <swiper class="swiper" bindchange="changeAlbum" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
+    <block wx:for="{{albums}}" wx:key="title">
+      <swiper-item class="swiper-item">
+        <image src="{{item.cover}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <scroll-view class="scroll-view" scroll-y="true" scroll-top="{{scrollTop}}">
+    <block wx:for="{{videoList}}" wx:key="id">
+      <view class="video-item" data-id="{{index}}" catchtap="playVideo">
+        <image src="{{item.cover}}" class="video-cover"></image>
+        <view class="video-info">
+          <text class="video-title">{{item.title}}</text>
+          <text class="video-play-count">{{item.play_count}}次播放</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="player" wx:if="{{playerShow}}">
+    <icon class="close" type="clear" size="45" color="rgba(255, 255, 255, 0.5)" catchtap="closeVideo" />
+    <video class="video" src="{{videoUrl}}" autoplay="true" />
+    <text class="player-title">第{{videoIndex + 1}}集:{{videoTitle}}</text>
+    <view class="handle-bar">
+      <button class="pre-btn" catchtap="preVideo">上一集</button>
+      <button class="next-btn" catchtap="nextVideo">下一集</button>
+    </view>
+    <text class="msg">没看过瘾？返回主页侧滑看更多炸裂专辑</text>
+  </view>
+</view>
